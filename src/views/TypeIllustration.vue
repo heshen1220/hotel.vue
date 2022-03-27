@@ -1,5 +1,6 @@
 <template>
-    <div id="main" style="width:100%;height:800px"></div>
+    <div id="main" style="width:100%;height:100%"></div>
+
 </template>
 
 <script>
@@ -13,18 +14,23 @@
             let myChart = echarts.init(document.getElementById('main'));
             myChart.setOption({
                 title: {
-                    text: '房间类型图示'
+                    text: '统计图示'
                 },
                 tooltip: {},
                 xAxis: {
-                    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+                    data: ['标准间','麻将房', '大床房', '家庭房', '豪华客房','商务单人间']
                 },
                 yAxis: {},
                 series: [
                     {
-                        name: '销量',
+                        name:"拥有数量",
                         type: 'bar',
-                        data: [5, 20, 36, 10, 10, 20]
+                        data: [14, 3, 6, 2, 2, 4]
+                    },
+                    {
+                        name:"可用数量",
+                        type: 'bar',
+                        data: [6, 2, 5, 1, 1, 2]
                     }
                 ]
             })

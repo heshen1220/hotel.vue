@@ -1,10 +1,26 @@
 <template>
-    
+    <div style="font-size: 12px;line-height: 60px; display: flex">
+        <div style="flex: 1;font-size: 18px">
+            <span :class="collapseBtnClass" style="cursor: pointer" @click="collapse"></span>
+        </div>
+
+        <el-dropdown style="width: 70px;cursor: pointer">
+            <span>河神</span><i class="el-icon-arrow-down"></i>
+            <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>个人信息</el-dropdown-item>
+                <el-dropdown-item>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+        </el-dropdown>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Header.vue"
+        name: "Header",
+        props: {
+            collapseBtnClass: String,
+            collapse: Boolean
+        }
     }
 </script>
 
