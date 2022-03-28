@@ -73,7 +73,7 @@
                     let form = new FormData();
                     form.append("pageNum", this.pageNum);
                     form.append("pageSize", this.pageSize);
-                    this.request.post("http://localhost:8090/roomType", form).then(res => {
+                    this.request.post("/roomType", form).then(res => {
                         this.tableData = res.result.list
                         console.log(this.tableData)
                         this.total = res.result.total

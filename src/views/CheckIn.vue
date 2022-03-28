@@ -34,7 +34,7 @@
                     v-model="address"></el-input>
           <span style="font-size: 15px" class="ml-50">备注</span>
           <el-input style="width: 300px ; padding-left:65px" placeholder="请输入备注"
-                    v-model="memo1"></el-input>
+                    v-model="userMemo"></el-input>
         </el-row>
       </div>
     </el-card>
@@ -62,12 +62,12 @@
                       v-model="deposit"></el-input>
             <span style="font-size: 15px;margin-left: 165px">备注</span>
             <el-input style="width: 300px ; padding-left:50px" placeholder="请输入备注"
-                      v-model="memo2"></el-input>
+                      v-model="memo"></el-input>
           </el-row>
         </div>
       </el-card>
     </el-row>
-    <el-button type="primary" style="margin-top: 50px ;margin-left: 570px ; width: 80px">提交</el-button>
+    <el-button type="primary" style="margin-top: 50px ;margin-left: 570px ; width: 80px" @click="load">提交</el-button>
     <el-button type="warning" style="margin-left: 50px ; width: 80px">清除</el-button>
   </div>
 </template>
@@ -78,19 +78,45 @@ export default {
   data() {
     return {
       value: '',
-      time:'',
-      name:"",
-      phone:"",
-      id:"",
-      address:"",
-      memo1:"",
-      room:"",
-      deposit:"",
-      memo2:"",
+      time: '',
+      name: "",
+      phone: "",
+      id: "",
+      address: "",
+      userMemo: "",
+      room: "",
+      deposit: "",
+      memo: "",
+      timeIn:"",
+      timeOut:"",
       options: [{
         value: '选项1',
         label: '居民身份证'
       }]
+    }
+  },
+  methods: {
+    load() {
+      let form = new FormData();
+      form.append("name", this.name);
+      form.append("phone", this.phone);
+      form.append("id", this.id);
+      form.append("room", this.room);
+      form.append("deposit", this.deposit);
+      form.append("memo", this.memo);
+      form.append("time", this.time);
+      this.request.post("/Reception", form).then(
+          this.name="",
+          this.phone="",
+          this.id="",
+          this.room="",
+          this.deposit="",
+          this.memo="",
+          this.time="",
+          this.userMemo="",
+          this.address="",
+          this.value="",
+      )
     }
   }
 }

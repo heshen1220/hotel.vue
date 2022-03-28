@@ -146,7 +146,7 @@
                 form.append("name", this.name);
                 form.append("id", this.id);
                 form.append("tel", this.tel);
-                this.request.post("http://localhost:8090/customer", form).then(res => {
+                this.request.post("/customer", form).then(res => {
                     this.tableData = res.result.list
                     console.log(this.tableData)
                     this.total = res.result.total
