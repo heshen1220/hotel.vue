@@ -1,9 +1,5 @@
 <template>
     <div>
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-        </el-breadcrumb>
         <div style="padding: 10px 0">
             <span style="font-size: 15px">姓名</span>
             <el-input style="width: 200px" placeholder="请输入姓名" class="ml-5" suffix-icon="el-icon-search"

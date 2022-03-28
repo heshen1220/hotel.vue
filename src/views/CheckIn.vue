@@ -1,9 +1,5 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>客户住房</el-breadcrumb-item>
-    </el-breadcrumb>
     <el-card class="box-card" shadow="hover" header="用户信息" style="margin-top: 20px">
       <div class="text item">
         <el-row style="margin-top: 10px">

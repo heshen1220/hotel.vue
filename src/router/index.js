@@ -11,25 +11,27 @@ const routes = [
     component: ()=> import('../views/Manage'),
     redirect:"/Information",
     children:[
-      {path:'information',name:'Information',component: ()=> import('../views/Information.vue')},
-      {path:'room',name:'Room',component: ()=> import('../views/Room.vue')},
-      {path:'roomType',name:'RoomType',component: ()=> import('../views/RoomType.vue')},
-      {path:'typeIllustration',name:'TypeIllustration',component: ()=> import('../views/TypeIllustration.vue')},
-      {path:'bookOrder',name:'BookOrder',component: ()=> import('../views/BookOrder.vue')},
-      {path:'orderAnalysis',name:'OrderAnalysis',component: ()=> import('../views/OrderAnalysis.vue')},
+      {path:'information',name:'首页',component: ()=> import('../views/Information.vue')},
+      {path:'room',name:'房间管理',component: ()=> import('../views/Room.vue')},
+      {path:'roomType',name:'房间类型',component: ()=> import('../views/RoomType.vue')},
+      {path:'typeIllustration',name:'统计图示',component: ()=> import('../views/TypeIllustration.vue')},
+      {path:'bookOrder',name:'订单日志',component: ()=> import('../views/BookOrder.vue')},
+      {path:'orderAnalysis',name:'订单分析',component: ()=> import('../views/OrderAnalysis.vue')},
       {path:'user',name:'User',component: ()=> import('../views/User.vue')},
-      {path:'CheckIn',name:'checkIn',component: ()=> import('../views/CheckIn.vue')},
-      {path:'CheckOut',name:'CheckOut',component: ()=> import('../views/CheckOut.vue')},
-      {path:'Users',name:'Users',component: ()=> import('../views/Users')}
+      {path:'CheckIn',name:'客户住房',component: ()=> import('../views/CheckIn.vue')},
+      {path:'CheckOut',name:'客户退房',component: ()=> import('../views/CheckOut.vue')},
+      {path:'Users',name:'用户管理',component: ()=> import('../views/Users')}
     ]
   },
   {
     path: '/about',
     name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component:()=>import('../views/Login.vue')
   }
 ]
 
@@ -37,6 +39,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to,from,next)=>{
+  localStorage.setItem("currentPathName",to.name)
+  next()
 })
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core';

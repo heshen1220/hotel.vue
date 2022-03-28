@@ -9,7 +9,7 @@
             <el-container>
 
                 <el-header style="border-bottom: 1px solid #cccccc">
-                   <Header :collapse-btn-class="collapseBtnClass" :collapse="isCollapse"></Header>
+                   <Header :collapse-btn-class="collapseBtnClass" :collapse="isCollapse" :currentPathName="currentPathName"></Header>
                 </el-header>
 
                 <el-main>

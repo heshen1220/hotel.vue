@@ -1,9 +1,5 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>客户退房</el-breadcrumb-item>
-    </el-breadcrumb>
     <div style="padding: 10px 0px 0px 0px">
       <span style="font-size: 15px">姓名</span>
       <el-input style="width: 200px" placeholder="请输入姓名" class="ml-5" suffix-icon="el-icon-search"
@@ -13,7 +9,7 @@
                 v-model="number"></el-input>
       <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
     </div>
-    <el-table :data="tableData" border stripe header-cell-class-name="headerBg">
+    <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 30px">
       <el-table-column type="selection" width="55" @selection-change="handleSelectionChange">
       </el-table-column>
       <el-table-column prop="name" label="姓名" >

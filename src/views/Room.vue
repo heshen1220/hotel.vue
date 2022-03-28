@@ -1,9 +1,5 @@
 <template>
   <div>
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>房间信息</el-breadcrumb-item>
-    </el-breadcrumb>
     <div style="padding: 10px 0">
       <span style="font-size: 15px">房间号</span>
       <el-input style="width: 200px" placeholder="请输入房号" class="ml-5" suffix-icon="el-icon-search"
@@ -15,10 +11,10 @@
       <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
       <el-button class="ml-5" type="warning" @click="search">清空</el-button>
     </div>
-    <div style="margin: 10px 0">
+    <div style="margin: 3px 0">
       <el-button type="primary" @click="insert">新增<i class="el-icon-circle-plus-outline"></i></el-button>
     </div>
-    <el-table :data="tableData" border stripe header-cell-class-name="headerBg">
+    <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 2px">
       <el-table-column type="selection" width="55" @selection-change="handleSelectionChange">
       </el-table-column>
       <el-table-column prop="number" label="房间号">
@@ -128,6 +124,7 @@ export default {
       form: {},
       multipleSelection: [],
       headerBg: 'headerBg',
+      currentPathName:"房间信息",
       radio: "",
     }
   },
