@@ -101,18 +101,22 @@ export default {
       form.append("deposit", this.deposit);
       form.append("memo", this.memo);
       form.append("time", this.time);
-      this.request.post("/Reception", form).then(
-          this.name="",
-          this.phone="",
-          this.id="",
-          this.room="",
-          this.deposit="",
-          this.memo="",
-          this.time="",
-          this.userMemo="",
-          this.address="",
-          this.value="",
-      )
+      this.request.post("/Reception", form).then(res => {
+        if (res.code=="401"){
+          this.$message.error("请先登录！")
+          this.$router.push("/login")
+        }
+        this.name = "",
+            this.phone = "",
+            this.id = "",
+            this.room = "",
+            this.deposit = "",
+            this.memo = "",
+            this.time = "",
+            this.userMemo = "",
+            this.address = "",
+            this.value = ""
+      })
     }
   }
 }

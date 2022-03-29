@@ -3,25 +3,25 @@
     <div style="padding: 10px 0">
       <span style="font-size: 15px">身份证号</span>
       <el-input style="width: 200px" placeholder="请输入身份证号" class="ml-5" suffix-icon="el-icon-search"
-                v-model="number"></el-input>
+                v-model="id"></el-input>
       <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
     </div>
     <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 30px">
       <el-table-column type="selection" width="55" @selection-change="handleSelectionChange">
       </el-table-column>
-      <el-table-column prop="floor" label="姓名">
+      <el-table-column prop="name" label="姓名">
       </el-table-column>
-      <el-table-column prop="floor" label="身份证号">
+      <el-table-column prop="id" label="身份证号">
       </el-table-column>
-      <el-table-column prop="number" label="手机号">
+      <el-table-column prop="phone" label="手机号">
       </el-table-column>
-      <el-table-column prop="type" label="房间号">
+      <el-table-column prop="room" label="房间号">
       </el-table-column>
-      <el-table-column prop="people" label="状态">
+      <el-table-column prop="state" label="状态">
       </el-table-column>
-      <el-table-column prop="state" label="入住时间">
+      <el-table-column prop="timeIn" label="入住时间">
       </el-table-column>
-      <el-table-column prop="Price" label="退房时间">
+      <el-table-column prop="timeOut" label="退房时间">
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -55,14 +55,13 @@ export default {
       total: 0,
       pageNum: 1,
       pageSize: 10,
-      floor: "",
-      number: "",
-      area: "",
-      type: "",
-      people: "",
+      name: "",
+      id: "",
+      phone: "",
+      room: "",
       state: "",
-      Price: "",
-      memo: "",
+      timeIn: "",
+      timeOut: "",
       BgColor: "#67C23A",
       dialogFormVisible: false,
       form: {},
@@ -79,8 +78,6 @@ export default {
       let form = new FormData();
       form.append("pageNum", this.pageNum);
       form.append("pageSize", this.pageSize);
-      form.append("number", this.number);
-      form.append("state", this.radio);
       /*this.request.post("http://localhost:8090/customer", form).then(res => {
           this.tableData = res.result.list
           console.log(this.tableData)
@@ -90,8 +87,6 @@ export default {
       })*/
     },
     search() {
-      this.number = ""
-      this.state = ""
       this.load()
     },
     handleSizeChange(pageSize) {

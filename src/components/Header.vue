@@ -11,12 +11,12 @@
         <el-dropdown style="width: 100px;cursor: pointer">
           <div style="display: inline-block">
             <img src="../assets/河神.jpg" alt="" style="width:30px;border-radius: 50%;position: relative;top: 10px;right: 5px">
-            <span>河神</span><i class="el-icon-arrow-down"></i>
+            <span>{{user.name}}</span><i class="el-icon-arrow-down"></i>
           </div>
             <el-dropdown-menu slot="dropdown" style="width: 100px; text-align: center">
                 <el-dropdown-item style="font-size: 14px; padding: 5px 0">个人信息</el-dropdown-item>
                 <el-dropdown-item style="font-size: 14px; padding: 5px 0">
-                  <router-link to="/login" style="text-decoration: none"> 退出登录</router-link>
+                  <span style="text-decoration: none" @click="loginOut"> 退出登录</span>
                 </el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -28,7 +28,8 @@
         name: "Header",
         data(){
           return{
-            currentPathName: ''
+            currentPathName: '',
+            user:localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
           }
         },
       watch:{
@@ -40,7 +41,14 @@
         props: {
             collapseBtnClass: String,
             collapse: Boolean
+        },
+      methods: {
+        loginOut() {
+          this.$router.push("/login")
+          localStorage.removeItem("user")
+          this.$message.success("退出成功")
         }
+      }
     }
 </script>
 

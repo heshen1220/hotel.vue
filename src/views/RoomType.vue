@@ -70,6 +70,10 @@ export default {
       form.append("pageNum", this.pageNum);
       form.append("pageSize", this.pageSize);
       this.request.post("/roomType", form).then(res => {
+        if (res.code=="401"){
+          this.$message.error("请先登录！")
+          this.$router.push("/login")
+        }
         this.tableData = res.result.list
         console.log(this.tableData)
         this.total = res.result.total

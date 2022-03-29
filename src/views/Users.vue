@@ -12,21 +12,15 @@
     <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 30px">
       <el-table-column type="selection" width="55" @selection-change="handleSelectionChange">
       </el-table-column>
-      <el-table-column prop="floor" label="姓名" >
+      <el-table-column prop="name" label="姓名" >
       </el-table-column>
-      <el-table-column prop="number" label="身份证号">
+      <el-table-column prop="id" label="身份证号">
       </el-table-column>
-      <el-table-column prop="area" label="手机号">
+      <el-table-column prop="phone" label="手机号">
       </el-table-column>
-      <el-table-column prop="type" label="职位">
+      <el-table-column prop="position" label="职位">
       </el-table-column>
-      <el-table-column prop="type" label="创建时间">
-      </el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button type="success">编辑<i class="el-icon-edit"></i></el-button>
-          <el-button type="success">删除<i class="el-icon-edit"></i></el-button>
-        </template>
+      <el-table-column prop="creatTime" label="创建时间">
       </el-table-column>
     </el-table>
     <div style="padding: 10px 0">
@@ -55,14 +49,12 @@ export default {
       total: 0,
       pageNum: 1,
       pageSize: 10,
-      floor: "",
-      number: "",
-      area:"",
-      type: "",
-      people:"",
-      state: "",
-      Price: "",
-      memo:"",
+      name: "",
+      id: "",
+      phone:"",
+      position: "",
+      password:"",
+      creatTime: "",
       BgColor:"#67C23A",
       dialogFormVisible: false,
       form:{},
@@ -79,20 +71,13 @@ export default {
       let form = new FormData();
       form.append("pageNum", this.pageNum);
       form.append("pageSize", this.pageSize);
-      form.append("number", this.number);
-      form.append("state", this.radio);
-      /*this.request.post("http://localhost:8090/customer", form).then(res => {
+      this.request.post("/getStaff", form).then(res => {
           this.tableData = res.result.list
           console.log(this.tableData)
           this.total = res.result.total
           this.pageNum = res.result.pageNum
           this.pageSize = res.result.pageSize
-      })*/
-    },
-    search() {
-      this.number = ""
-      this.state = ""
-      this.load()
+      })
     },
     handleSizeChange(pageSize) {
       this.pageSize = pageSize
@@ -102,16 +87,8 @@ export default {
       this.pageNum = pageNum
       this.load()
     },
-    handAdd(){
-      this.dialogFormVisible=true
-      this.form={}
-    },
     handleSelectionChange(val){
       this.multipleSelection=val
-    },
-    change(){
-      this.BgColor="#000000"
-      console.log(this.BgColor)
     },
   }
 }

@@ -3,10 +3,10 @@
     <div style="padding: 10px 0px 0px 0px">
       <span style="font-size: 15px">姓名</span>
       <el-input style="width: 200px" placeholder="请输入姓名" class="ml-5" suffix-icon="el-icon-search"
-                v-model="number"></el-input>
+                v-model="name"></el-input>
       <span style="font-size: 15px ;padding-left: 30px">身份证号</span>
       <el-input style="width: 200px" placeholder="请输入身份证号" class="ml-5" suffix-icon="el-icon-search"
-                v-model="number"></el-input>
+                v-model="id"></el-input>
       <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
     </div>
     <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 30px">
@@ -87,8 +87,6 @@ export default {
       let form = new FormData();
       form.append("pageNum", this.pageNum);
       form.append("pageSize", this.pageSize);
-      form.append("number", this.number);
-      form.append("state", this.radio);
       this.request.post("/getReception", form).then(res => {
           this.tableData = res.result.list
           console.log(this.tableData)
@@ -98,8 +96,6 @@ export default {
       })
     },
     search() {
-      this.number = ""
-      this.state = ""
       this.load()
     },
     handleSizeChange(pageSize) {

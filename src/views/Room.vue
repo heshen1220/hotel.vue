@@ -139,6 +139,10 @@ export default {
       form.append("number", this.number);
       form.append("state", this.radio);
       this.request.post("/room", form).then(res => {
+        if (res.code=="401"){
+          this.$message.error("请先登录！")
+          this.$router.push("/login")
+        }
         this.tableData = res.result.list
         console.log(this.tableData)
         this.total = res.result.total
