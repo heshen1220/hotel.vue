@@ -93,6 +93,19 @@ export default {
   },
   methods: {
     load() {
+      if (this.phone==''){
+        this.$message.error("请输入手机号码！")
+        return
+      }else if (this.id==''){
+        this.$message.error("请输入身份证号！")
+        return
+      }else if (this.room==''){
+        this.$message.error("请输入房间号！")
+        return
+      }else if (this.deposit==''){
+        this.$message.error("请输入押金！")
+        return
+      }
       let form = new FormData();
       form.append("name", this.name);
       form.append("phone", this.phone);
@@ -106,6 +119,8 @@ export default {
           this.$message.error("请先登录！")
           this.$router.push("/login")
         }
+        this.$message.success("登记成功！")
+        this.$router.push("/CheckOut")
         this.name = "",
             this.phone = "",
             this.id = "",

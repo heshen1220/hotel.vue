@@ -35,6 +35,7 @@
                 logTextShow: true,
               currentPathName:''
             }
+
         },
         components:{
             Aside,

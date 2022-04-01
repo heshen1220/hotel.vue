@@ -75,16 +75,12 @@ export default {
   },
   methods: {
     load() {
-      let form = new FormData();
-      form.append("pageNum", this.pageNum);
-      form.append("pageSize", this.pageSize);
-      /*this.request.post("http://localhost:8090/customer", form).then(res => {
-          this.tableData = res.result.list
-          console.log(this.tableData)
-          this.total = res.result.total
-          this.pageNum = res.result.pageNum
-          this.pageSize = res.result.pageSize
-      })*/
+      this.request.get("/login").then(res => {
+        if (res.code=="401"){
+          this.$message.error("请先登录！")
+          this.$router.push("/login")
+        }
+      })
     },
     search() {
       this.load()
