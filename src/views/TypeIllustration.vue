@@ -24,30 +24,37 @@
         },
       },
         mounted() {
-          let myChart = echarts.init(document.getElementById('main'));
-          myChart.setOption({
+          let option ={
             title: {
               text: '统计图示'
             },
             tooltip: {},
             xAxis: {
-              data: ['标准间', '麻将房', '大床房', '家庭房', '豪华客房', '商务单人间']
+              data: ['商务单人间' ,'大床房', "家庭房",'标准间',"豪华客房",'麻将房']
             },
             yAxis: {},
             series: [
               {
                 name: "拥有数量",
                 type: 'bar',
-                data: [14, 3, 6, 2, 2, 4]
+                data: []
               },
               {
                 name: "可用数量",
                 type: 'bar',
-                data: [6, 2, 5, 1, 1, 2]
+                data: []
               }
             ]
+          };
+          let charDom =document.getElementById("main");
+          let myChart = echarts.init(charDom);
+
+          this.request.get("/example").then(res =>{
+            option.series[0].data=res.result.y
+            option.series[1].data=res.result.z
+            myChart.setOption(option);
           })
-        },
+        }
     }
 </script>
 

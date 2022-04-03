@@ -4,7 +4,6 @@
 
 <script>
     import * as echarts from 'echarts'
-
     export default {
         name: "OrderAnalysis.vue",
         data() {

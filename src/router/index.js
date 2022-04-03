@@ -20,7 +20,8 @@ const routes = [
       {path:'user',name:'User',component: ()=> import('../views/User.vue')},
       {path:'CheckIn',name:'客户住房',component: ()=> import('../views/CheckIn.vue')},
       {path:'CheckOut',name:'客户退房',component: ()=> import('../views/CheckOut.vue')},
-      {path:'Users',name:'用户管理',component: ()=> import('../views/Users')}
+      {path:'Users',name:'用户管理',component: ()=> import('../views/Users')},
+      {path:'Order',name:'账单统计',component: ()=> import('../views/Order')}
     ]
   },
   {

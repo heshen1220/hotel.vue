@@ -119,6 +119,9 @@ export default {
           this.$message.error("请先登录！")
           this.$router.push("/login")
         }
+        form.append("number",this.room)
+        form.append("state","正在使用")
+        this.request.post("/updateRoomState", form)
         this.$message.success("登记成功！")
         this.$router.push("/CheckOut")
         this.name = "",

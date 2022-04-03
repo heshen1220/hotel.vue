@@ -190,10 +190,15 @@ export default {
       let data = new FormData();
       data.append("memo", "已退金额:" + form.return)
       data.append("uuid", form.uuid)
+      data.append("number",form.room)
+      data.append("state","未打扫")
+      let entry=form.deposit-form.return
+      data.append("name",entry.toString())
       this.request.post("/stateChange", data).then(res => {
         if (res.code == "200") {
           this.$message.success("退房成功！")
           this.dialogFormVisible = false
+          this.request.post("/updateRoomState", data)
           this.load()
         } else {
           this.dialogFormVisible = false

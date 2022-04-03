@@ -49,6 +49,11 @@
             <el-menu-item index="/Users">用户管理</el-menu-item>
             <el-menu-item index="">角色管理</el-menu-item>
         </el-submenu>
+      <el-menu-item index="/Order">
+        <template slot="title"><i class="el-icon-s-order"></i>
+          <span slot="title"> 账单统计</span>
+        </template>
+      </el-menu-item>
     </el-menu>
 </template>
 
