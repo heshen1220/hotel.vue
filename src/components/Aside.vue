@@ -42,18 +42,20 @@
               <el-menu-item index="/CheckIn">客户住房</el-menu-item>
             <el-menu-item index="/CheckOut">客户退房</el-menu-item>
         </el-submenu>
-        <el-submenu index="4">
+        <el-submenu index="4" >
             <template slot="title"><i class="el-icon-s-custom"></i>
                 <span slot="title">权限管理</span>
             </template>
             <el-menu-item index="/Users">用户管理</el-menu-item>
-            <el-menu-item index="">角色管理</el-menu-item>
+            <el-menu-item index="/Role" :disabled="change">角色管理</el-menu-item>
         </el-submenu>
-      <el-menu-item index="/Order">
+      <div>
+      <el-menu-item index="/Order" :disabled="change">
         <template slot="title"><i class="el-icon-s-order"></i>
-          <span slot="title"> 账单统计</span>
+          <span slot="title" >账单统计</span>
         </template>
       </el-menu-item>
+      </div>
     </el-menu>
 </template>
 
@@ -62,8 +64,25 @@
         name: "Aside",
         props:{
             isCollapse: Boolean,
-            logTextShow: Boolean
-        }
+            logTextShow: Boolean,
+        },
+      data(){
+          return{
+            user:localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
+            change:false
+          }
+      },
+      created() {
+        this.load()
+      },
+      methods: {
+          load(){
+            if (this.user.position!="管理员"){
+              this.change=true
+            }
+          }
+      }
+
     }
 </script>
 

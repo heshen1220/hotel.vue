@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Manage',
+    name: '首页',
     component: ()=> import('../views/Manage'),
     redirect:"/Information",
     children:[
@@ -21,6 +21,7 @@ const routes = [
       {path:'CheckIn',name:'客户住房',component: ()=> import('../views/CheckIn.vue')},
       {path:'CheckOut',name:'客户退房',component: ()=> import('../views/CheckOut.vue')},
       {path:'Users',name:'用户管理',component: ()=> import('../views/Users')},
+      {path:'Role',name:'角色管理',component: ()=> import('../views/Role')},
       {path:'Order',name:'账单统计',component: ()=> import('../views/Order')}
     ]
   },

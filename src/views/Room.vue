@@ -12,7 +12,7 @@
       <el-button class="ml-5" type="warning" @click="search">清空</el-button>
     </div>
     <div style="margin: 3px 0">
-      <el-button type="primary" @click="insert">新增<i class="el-icon-circle-plus-outline"></i></el-button>
+      <el-button type="primary" @click="insert" v-if="user.position=='管理员'">新增<i class="el-icon-circle-plus-outline"></i></el-button>
     </div>
     <el-table :data="tableData" border stripe header-cell-class-name="headerBg" style="padding-top: 2px">
       <el-table-column type="selection" width="55" @selection-change="handleSelectionChange">
@@ -34,7 +34,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="success" @click="handAdd(scope.row)">编辑<i class="el-icon-edit"></i></el-button>
-          <el-button type="warning" @click="deleteRoom(scope.row)">删除<i class="el-icon-remove-outline"></i></el-button>
+          <el-button type="warning" @click="deleteRoom(scope.row)" v-if="user.position=='管理员'">删除<i class="el-icon-remove-outline"></i></el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -126,6 +126,7 @@ export default {
       headerBg: 'headerBg',
       currentPathName:"房间信息",
       radio: "",
+      user:localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
     }
   },
   created() {
